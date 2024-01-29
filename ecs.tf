@@ -43,7 +43,7 @@ resource "aws_ecs_service" "testinggw" {
 data "template_file" "container_definition_testinggw" {
   template = file("./container_definitions/testinggw.tpl")
   vars = {
-    appmesh_virtual_node_name = "mesh/${aws_appmesh_mesh.testing.name}/virtualGateway/${aws_appmesh_virtual_gateway.example.name}"
+    appmesh_virtual_node_name = "mesh/${aws_appmesh_mesh.testing.name}/virtualGateway/${aws_appmesh_virtual_gateway.testing.name}"
   }
 }
 
@@ -94,7 +94,7 @@ data "template_file" "container_definition_testing1" {
   template = file("./container_definitions/testing.tpl")
   vars = {
     nginx_image               = "public.ecr.aws/nginx/nginx:stable-perl"
-    appmesh_virtual_node_name = "mesh/${aws_appmesh_mesh.testing.name}/virtualNode/${aws_appmesh_virtual_node.example1.name}"
+    appmesh_virtual_node_name = "mesh/${aws_appmesh_mesh.testing.name}/virtualNode/${aws_appmesh_virtual_node.testing.name}"
   }
 }
 
@@ -145,7 +145,7 @@ data "template_file" "container_definition_testing2" {
   template = file("./container_definitions/testing.tpl")
   vars = {
     nginx_image               = "public.ecr.aws/nginx/nginx:stable-perl"
-    appmesh_virtual_node_name = "mesh/${aws_appmesh_mesh.testing.name}/virtualNode/${aws_appmesh_virtual_node.example2.name}"
+    appmesh_virtual_node_name = "mesh/${aws_appmesh_mesh.testing.name}/virtualNode/${aws_appmesh_virtual_node.testing.name}"
   }
 }
 
