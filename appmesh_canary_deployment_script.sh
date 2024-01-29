@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set your AWS region
-AWS_REGION="ap-northeast-1"
+AWS_REGION="ap-south-1"
 
 # Set your AppMesh parameters
 APPMESH_NAME="example"
