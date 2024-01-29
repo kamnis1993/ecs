@@ -12,7 +12,7 @@
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "/ecs/example",
+        "awslogs-group": "/ecs/testing",
         "awslogs-region": "ap-northeast-1",
         "awslogs-stream-prefix": "app"
       }
@@ -78,7 +78,7 @@
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "/ecs/example",
+        "awslogs-group": "/ecs/testing",
         "awslogs-region": "ap-northeast-1",
         "awslogs-stream-prefix": "envoy"
       }
@@ -109,7 +109,7 @@
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "/ecs/example",
+        "awslogs-group": "/ecs/testing",
         "awslogs-region": "ap-northeast-1",
         "awslogs-stream-prefix": "xray"
       }

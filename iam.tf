@@ -1,9 +1,9 @@
-data "aws_iam_policy" "ecs_task_execution_role_policy" {
+data "aws_iam_policy" "ecs_task_execution-testing_role_policy" {
   arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
-data "aws_iam_policy_document" "ecs_task_execution" {
-#  source_json = data.aws_iam_policy.ecs_task_execution_role_policy.policy
+data "aws_iam_policy_document" "ecs_task_execution-testing" {
+#  source_json = data.aws_iam_policy.ecs_task_execution-testing_role_policy.policy
 
   statement {
     effect = "Allow"
@@ -27,11 +27,11 @@ data "aws_iam_policy_document" "ecs_task_execution" {
   }
 }
 
-module "ecs_task_execution_role" {
+module "ecs_task_execution-testing_role" {
   source     = "./modules/iam_role"
-  name       = "cstaskexecution"
+  name       = "cstaskexecution-1"
   identifier = "ecs-tasks.amazonaws.com"
-  policy     = data.aws_iam_policy_document.ecs_task_execution.json
+  policy     = data.aws_iam_policy_document.ecs_task_execution-testing.json
 }
 
 data "aws_iam_policy_document" "ecs_task" {

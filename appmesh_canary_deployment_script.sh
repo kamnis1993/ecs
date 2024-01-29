@@ -4,8 +4,8 @@
 AWS_REGION="ap-south-1"
 
 # Set your AppMesh parameters
-APPMESH_NAME="example"
-VIRTUAL_SERVICE_NAME="example"
+APPMESH_NAME="testing"
+VIRTUAL_SERVICE_NAME="testing"
 CANARY_TARGET_VERSION="v2"  # Version to gradually roll out
 
 # Set thresholds for canary deployment
@@ -22,7 +22,7 @@ aws appmesh update-route \
 # Sleep for a duration to observe metrics (adjust as needed)
 sleep 300  # Sleep for 5 minutes
 
-# Check metrics (example: error rate)
+# Check metrics (testing: error rate)
 error_rate=$(aws cloudwatch get-metric-data \
   --region $AWS_REGION \
   --start-time $(date -u +%Y-%m-%dT%H:%M:%SZ --date '-5 minutes') \
@@ -45,7 +45,7 @@ if (( $(echo "$error_rate > $ERROR_THRESHOLD" | bc -l) )); then
     --spec '{"httpRoute": {"action": {"weightedTargets": [{"virtualNode": "canary", "weight": 0}]}}}'
 
   # Notify on rollback (add your notification logic)
-  echo "Canary deployment rolled back due to high error rate" | mail -s "Canary Deployment Rollback" your-email@example.com
+  echo "Canary deployment rolled back due to high error rate" | mail -s "Canary Deployment Rollback" your-email@testing.com
 else
   # Gradually increase canary traffic to 100%
   for weight in $(seq 10 10 100); do

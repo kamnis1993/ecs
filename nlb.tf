@@ -1,5 +1,5 @@
-resource "aws_lb" "example" {
-  name                       = "example"
+resource "aws_lb" "testing" {
+  name                       = "testing"
   load_balancer_type         = "network"
   internal                   = false
   idle_timeout               = 60
@@ -9,18 +9,18 @@ resource "aws_lb" "example" {
 }
 
 resource "aws_lb_listener" "http" {
-  load_balancer_arn = aws_lb.example.arn
+  load_balancer_arn = aws_lb.testing.arn
   port              = "80"
   protocol          = "TCP"
 
   default_action {
-    target_group_arn = aws_lb_target_group.example.arn
+    target_group_arn = aws_lb_target_group.testing.arn
     type             = "forward"
   }
 }
 
-resource "aws_lb_target_group" "example" {
-  name                 = "example"
+resource "aws_lb_target_group" "testing" {
+  name                 = "testing"
   vpc_id               = module.vpc.vpc_id
   target_type          = "ip"
   port                 = 80
@@ -35,6 +35,6 @@ resource "aws_lb_target_group" "example" {
     port                = 9080
   }
 
-  depends_on = [aws_lb.example]
+  depends_on = [aws_lb.testing]
 }
 

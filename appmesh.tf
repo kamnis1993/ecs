@@ -1,10 +1,10 @@
-resource "aws_appmesh_mesh" "example" {
-  name = "example"
+resource "aws_appmesh_mesh" "testing" {
+  name = "testomg"
 }
 
-resource "aws_appmesh_virtual_gateway" "example" {
-  name      = "example"
-  mesh_name = aws_appmesh_mesh.example.name
+resource "aws_appmesh_virtual_gateway" "testing" {
+  name      = "testing"
+  mesh_name = aws_appmesh_mesh.testing.name
 
   spec {
     listener {
@@ -16,17 +16,17 @@ resource "aws_appmesh_virtual_gateway" "example" {
   }
 }
 
-resource "aws_appmesh_gateway_route" "example" {
-  name                 = "example"
-  mesh_name            = aws_appmesh_mesh.example.name
-  virtual_gateway_name = aws_appmesh_virtual_gateway.example.name
+resource "aws_appmesh_gateway_route" "testing" {
+  name                 = "testing"
+  mesh_name            = aws_appmesh_mesh.testing.name
+  virtual_gateway_name = aws_appmesh_virtual_gateway.testing.name
 
   spec {
     http_route {
       action {
         target {
           virtual_service {
-            virtual_service_name = aws_appmesh_virtual_service.example.name
+            virtual_service_name = aws_appmesh_virtual_service.testing.name
           }
         }
       }
@@ -38,22 +38,22 @@ resource "aws_appmesh_gateway_route" "example" {
   }
 }
 
-resource "aws_appmesh_virtual_service" "example" {
+resource "aws_appmesh_virtual_service" "testing" {
   name      = "exmaple"
-  mesh_name = aws_appmesh_mesh.example.id
+  mesh_name = aws_appmesh_mesh.testing.id
 
   spec {
     provider {
       virtual_router {
-        virtual_router_name = aws_appmesh_virtual_router.example.name
+        virtual_router_name = aws_appmesh_virtual_router.testing.name
       }
     }
   }
 }
 
-resource "aws_appmesh_virtual_router" "example" {
-  name      = "example"
-  mesh_name = aws_appmesh_mesh.example.id
+resource "aws_appmesh_virtual_router" "testing" {
+  name      = "testing"
+  mesh_name = aws_appmesh_mesh.testing.id
 
   spec {
     listener {
@@ -65,10 +65,10 @@ resource "aws_appmesh_virtual_router" "example" {
   }
 }
 
-resource "aws_appmesh_route" "example" {
-  name                = "example"
-  mesh_name           = aws_appmesh_mesh.example.id
-  virtual_router_name = aws_appmesh_virtual_router.example.name
+resource "aws_appmesh_route" "testing" {
+  name                = "testing"
+  mesh_name           = aws_appmesh_mesh.testing.id
+  virtual_router_name = aws_appmesh_virtual_router.testing.name
 
   spec {
     http_route {
@@ -78,12 +78,12 @@ resource "aws_appmesh_route" "example" {
 
       action {
         weighted_target {
-          virtual_node = aws_appmesh_virtual_node.example1.name
+          virtual_node = aws_appmesh_virtual_node.testing1.name
           weight       = 95
         }
 
         weighted_target {
-          virtual_node = aws_appmesh_virtual_node.example2.name
+          virtual_node = aws_appmesh_virtual_node.testing2.name
           weight       = 5
         }
       }
@@ -91,9 +91,9 @@ resource "aws_appmesh_route" "example" {
   }
 }
 
-resource "aws_appmesh_virtual_node" "example1" {
-  name      = "example1"
-  mesh_name = aws_appmesh_mesh.example.id
+resource "aws_appmesh_virtual_node" "testing1" {
+  name      = "testing1"
+  mesh_name = aws_appmesh_mesh.testing.id
 
   spec {
     listener {
@@ -113,8 +113,8 @@ resource "aws_appmesh_virtual_node" "example1" {
 
     service_discovery {
       aws_cloud_map {
-        namespace_name = aws_service_discovery_private_dns_namespace.example.name
-        service_name   = "example1"
+        namespace_name = aws_service_discovery_private_dns_namespace.testing.name
+        service_name   = "testing1"
       }
     }
 
@@ -128,9 +128,9 @@ resource "aws_appmesh_virtual_node" "example1" {
   }
 }
 
-resource "aws_appmesh_virtual_node" "example2" {
-  name      = "example2"
-  mesh_name = aws_appmesh_mesh.example.id
+resource "aws_appmesh_virtual_node" "testing2" {
+  name      = "testing2"
+  mesh_name = aws_appmesh_mesh.testing.id
 
   spec {
     listener {
@@ -150,8 +150,8 @@ resource "aws_appmesh_virtual_node" "example2" {
 
     service_discovery {
       aws_cloud_map {
-        namespace_name = aws_service_discovery_private_dns_namespace.example.name
-        service_name   = "example2"
+        namespace_name = aws_service_discovery_private_dns_namespace.testing.name
+        service_name   = "testing2"
       }
     }
 

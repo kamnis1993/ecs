@@ -1,14 +1,14 @@
-resource "aws_service_discovery_private_dns_namespace" "example" {
-  name        = "example.internal"
-  description = "example"
+resource "aws_service_discovery_private_dns_namespace" "testing" {
+  name        = "testing.internal"
+  description = "testing"
   vpc         = module.vpc.vpc_id
 }
 
-resource "aws_service_discovery_service" "examplegw" {
-  name = "examplegw"
+resource "aws_service_discovery_service" "testinggw" {
+  name = "testinggw"
 
   dns_config {
-    namespace_id = aws_service_discovery_private_dns_namespace.example.id
+    namespace_id = aws_service_discovery_private_dns_namespace.testing.id
 
     dns_records {
       ttl  = 10
@@ -23,11 +23,11 @@ resource "aws_service_discovery_service" "examplegw" {
   }
 }
 
-resource "aws_service_discovery_service" "example1" {
-  name = "example1"
+resource "aws_service_discovery_service" "testing1" {
+  name = "testing1"
 
   dns_config {
-    namespace_id = aws_service_discovery_private_dns_namespace.example.id
+    namespace_id = aws_service_discovery_private_dns_namespace.testing.id
 
     dns_records {
       ttl  = 10
@@ -42,11 +42,11 @@ resource "aws_service_discovery_service" "example1" {
   }
 }
 
-resource "aws_service_discovery_service" "example2" {
-  name = "example2"
+resource "aws_service_discovery_service" "testing2" {
+  name = "testing2"
 
   dns_config {
-    namespace_id = aws_service_discovery_private_dns_namespace.example.id
+    namespace_id = aws_service_discovery_private_dns_namespace.testing.id
 
     dns_records {
       ttl  = 10

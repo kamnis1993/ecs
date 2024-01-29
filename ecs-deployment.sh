@@ -5,7 +5,7 @@ ACCOUNT_ID=643575754776
 ACCESS_KEY=AKIAZLWA2WAMLKET3IU6
 SECRET_KEY=3LGgYgQVKQ7PVwDKIGWpVFgIPgNK7TVColh2psMJ
 COMMIT_HASH=default
-ECS_SERVICE_ARN=arn:aws:ecs:ap-northeast-1:643575754776:cluster/example
+ECS_SERVICE_ARN=arn:aws:ecs:ap-northeast-1:643575754776:cluster/testing
 
 # Your ECS deployment commands here
 

@@ -43,7 +43,7 @@
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "/ecs/example",
+        "awslogs-group": "/ecs/testing",
         "awslogs-region": "ap-northeast-1",
         "awslogs-stream-prefix": "envoygw"
       }
@@ -74,7 +74,7 @@
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "/ecs/example",
+        "awslogs-group": "/ecs/testing",
         "awslogs-region": "ap-northeast-1",
         "awslogs-stream-prefix": "xraygw"
       }
